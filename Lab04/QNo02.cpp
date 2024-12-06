@@ -74,6 +74,26 @@ public:
         }
     }
 
+    void Print()
+    {
+        // This function prints the data of all the nodes in the list.
+        if (head != nullptr)
+        {
+            Node *current = head;
+
+            while (current != nullptr)
+            {
+                cout << current->GetData() << "->";
+                current = current->GetNext();
+            }
+        }
+        else
+        {
+            cout << "List is empty\n";
+        }
+    }
+
+
     ~List()
     {
         if (head != nullptr)
