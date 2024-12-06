@@ -220,22 +220,47 @@ int main()
 
     // Start
 
-    myList.Insert(1);
-    myList.Insert(2);
-    myList.Insert(3);
-    myList.Insert(4);
+    // myList.Insert(1);
+    // myList.Insert(2);
+    // myList.Insert(3);
+    // myList.Insert(4);
 
-    myList.Delete(3);
-    myList.Delete(2);
-    myList.Delete(-1);
-    myList.Delete(1);
-    myList.Delete(0);
+    // myList.Delete(3);
+    // myList.Delete(2);
+    // myList.Delete(-1);
+    // myList.Delete(1);
+    // myList.Delete(0);
 
-    myList.Delete(0);
-    myList.Delete(-1);
+    // myList.Delete(0);
+    // myList.Delete(-1);
 
     // End
 
+    // --> Testing Addbetween function (Tested)
+
+    // Start
+
+    myList.AddBetween(1, 0, 1);
+    myList.AddBetween(1, 0, -1);
+    myList.Insert(1);
+    myList.AddBetween(2, 0, 1);
+    myList.Insert(2);
+    myList.AddBetween(3, 0, 1);
+    myList.Insert(3); // 1,3,2,3
+    myList.AddBetween(5, 2, 3);
+    myList.Insert(4);
+    myList.AddBetween(8, 6, 7);
+
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+
+    // End
 
     return 0;
 }
