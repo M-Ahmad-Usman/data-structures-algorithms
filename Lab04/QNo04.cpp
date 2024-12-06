@@ -387,6 +387,42 @@ public:
         }
     }
 
+    void Sort()
+    {
+        // This function sorts the list using bubble sort
+
+        if (head == nullptr)
+        {
+            cout << "List is empty\n";
+            return;
+        }
+
+        else if (head->GetNext() != nullptr)
+        {   
+            Node *current;
+            Node *previous;
+            int size = Size();
+
+            for (int i=0; i < size - 1; i++)
+            {
+                current = head->GetNext();
+                previous = head;
+
+                for (int j=0; j < size -1 -i && current != nullptr; j++)
+                {
+                    if (previous->GetData() > current->GetData())
+                    {
+                        int temp = previous->GetData();
+                        previous->SetData(current->GetData());
+                        current->SetData(temp);
+                    }
+                    current = current->GetNext();
+                    previous = previous->GetNext();
+                }
+            }
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -468,6 +504,37 @@ int main()
 
     // myList.Delete(0);
     // myList.Delete(0);
+    // End
+
+    // --> Testing Sort function (Tested)
+    // Start
+    myList.Sort();
+    myList.Insert(10);
+    myList.Sort();
+
+    myList.Insert(9);
+    myList.Sort();
+
+    myList.Insert(8);
+    myList.Insert(7);
+    myList.Insert(6);
+    myList.Insert(5);
+    myList.Insert(4);
+    myList.Insert(3);
+    myList.Insert(2);
+    myList.Insert(1);
+    myList.Sort();
+
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
     // End
 
     return 0;
