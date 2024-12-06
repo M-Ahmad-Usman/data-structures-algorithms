@@ -93,6 +93,55 @@ public:
         }
     }
 
+    void Delete(int index)
+    {
+        // This function delete a node from the given index. The index numbers start from 0
+        if (head != nullptr)
+        {
+            if (index == 0)
+            {
+                Node *current = head;
+                head = head->GetNext();
+                delete current;
+                current = nullptr;
+            }
+            else if (index > 0)
+            {
+                Node *current = head;
+                Node *previous = nullptr;
+
+                while (index > 0 && current != nullptr)
+                {
+                    previous = current;
+                    current = current->GetNext();
+
+                    index--;
+                }
+
+                if (current != nullptr) // Checking if index is in the list size
+                {
+                    previous->SetNext(current->GetNext());
+                    delete current;
+                    current = nullptr;
+
+                    return;
+                }
+                else
+                {
+                    cout << "Index out of bound\n";
+                    return;
+                }
+            }
+            else if (index < 0)
+            {
+                cout << "Please enter a valid Node's index\n";
+            }
+        }
+        else
+        {
+            cout << "List is empty\n";
+        }
+    }
 
     ~List()
     {
