@@ -260,6 +260,56 @@ public:
         return occurrence;
     }
 
+    void Insert(int data, int index)
+    {
+        // This overloaded function inserts an item at desired location (Not at end)
+
+        // Case 1: if index is negative
+        if (index < 0)
+        {
+            cout << "Please enter non-negative index\n";
+            return;
+        }
+
+        // Case 2: if Index is at head
+        else if (index == 0)
+        {
+            Node *newNode = new Node();
+            newNode->SetData(data);
+            newNode->SetNext(head); // If head is null then next will be null otherwise if head is not null then newnode will contain the address of head's ndoe
+
+            head = newNode;
+        }
+
+        // Case 3: if Index is not at head
+        else if (index > 0)
+        {
+            Node *newNode = new Node();
+            newNode->SetData(data);
+
+            Node *current = head;
+            Node *previous = nullptr;
+
+            while (index > 0 && current != nullptr)
+            {
+                previous = current;
+                current = current->GetNext();
+
+                index--;
+            }
+
+            if (current != nullptr)
+            {
+                previous->SetNext(newNode);
+                newNode->SetNext(current);
+            }
+            else
+            {
+                cout << "Index out of bound\n";
+            }
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -298,13 +348,31 @@ int main()
 
     // --> Testing Search function (Tested)
     // Start
-    myList.Insert(2);
-    myList.Insert(3);
-    myList.Insert(4);
-    myList.Insert(5);
+    // myList.Insert(2);
+    // myList.Insert(3);
+    // myList.Insert(4);
+    // myList.Insert(5);
 
-    cout << "Occurrences of 1: " << myList.Search(1) << endl;
+    // cout << "Occurrences of 1: " << myList.Search(1) << endl;
 
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // End
+
+    // --> Testing overloaded Insert Function with index (Tested)
+    // Start
+    myList.Insert(1, 2);
+    myList.Insert(0, 0);
+    myList.Insert(1, 0);
+    myList.Insert(3, 1);
+    myList.Insert(4, 2);
+    myList.Insert(5, 8);
+    myList.Insert(1, -1);
+
+    myList.Delete(0);
+    myList.Delete(0);
     myList.Delete(0);
     myList.Delete(0);
     myList.Delete(0);
