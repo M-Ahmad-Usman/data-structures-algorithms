@@ -243,6 +243,23 @@ public:
         }
     }
 
+    int Search(int data)
+    {
+        // This function returns the number of occurences of given data in the list
+        int occurrence = 0;
+
+        Node *current = head;
+        while (current != nullptr)
+        {
+            if (current->GetData() == data)
+                occurrence++;
+
+            current = current->GetNext();
+        }
+
+        return occurrence;
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -277,6 +294,21 @@ int main()
     // myList.Delete(2);
     // myList.Delete(1);
     // myList.Delete(0);
+    // End
+
+    // --> Testing Search function (Tested)
+    // Start
+    myList.Insert(2);
+    myList.Insert(3);
+    myList.Insert(4);
+    myList.Insert(5);
+
+    cout << "Occurrences of 1: " << myList.Search(1) << endl;
+
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
+    myList.Delete(0);
     // End
 
     return 0;
