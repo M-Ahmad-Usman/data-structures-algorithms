@@ -197,6 +197,29 @@ public:
         }
     }
 
+    int Findminimum()
+    {
+        // This function finds minimum from the whole list and returns -1 if the list is empty
+        if (head != nullptr)
+        {
+            int minimum = head->GetData();
+            Node *current = head->GetNext();
+            while (current != nullptr)
+            {
+                if (current->GetData() < minimum)
+                    minimum = current->GetData();
+
+                current = current->GetNext();
+            }
+
+            return minimum;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -215,6 +238,23 @@ public:
 
 int main()
 {
+    List myList;
+
+    // --> Testing Find Minimum (Tested)
+    // Start
+    cout << "Minimum: " << myList.Findminimum() << endl;
+    myList.Insert(10);
+    myList.Insert(112);
+    myList.Insert(13);
+    myList.Insert(3);
+
+    cout << "Minimum: " << myList.Findminimum() << endl;
+
+    myList.Delete(3);
+    myList.Delete(2);
+    myList.Delete(1);
+    myList.Delete(0);
+    // End
 
     return 0;
 }
