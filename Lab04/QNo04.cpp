@@ -365,6 +365,28 @@ public:
         }
     }
 
+    int Size()
+    {
+        if (head == nullptr)
+        {
+            return 0;
+        }
+        else
+        {
+            int size = 0;
+
+            Node *current = head;
+            while (current != nullptr)
+            {
+                current = current->GetNext();
+
+                size++;
+            }
+
+            return size;
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -436,16 +458,16 @@ int main()
 
     // --> Testing Swap Function (Tested)
     // Start
-    myList.Swap(-1, 1);
-    myList.Swap(0, 1);
-    myList.Insert(1);
-    myList.Insert(2);
-    myList.Swap(1,2);
-    myList.Swap(0,1);
-    myList.Swap(1,0);
+    // myList.Swap(-1, 1);
+    // myList.Swap(0, 1);
+    // myList.Insert(1);
+    // myList.Insert(2);
+    // myList.Swap(1,2);
+    // myList.Swap(0,1);
+    // myList.Swap(1,0);
 
-    myList.Delete(0);
-    myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
     // End
 
     return 0;
