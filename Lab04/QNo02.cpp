@@ -143,6 +143,52 @@ public:
         }
     }
 
+    void AddBetween(int data, int firstNodeIndex, int secondNodeIndex)
+    {
+        // This function adds a new node between two existing nodes of given indexes.
+        if (firstNodeIndex < 0 || secondNodeIndex < 0)
+        {
+            cout << "Please enter non-negative indexes\n";
+            return;
+        }
+        else if (head == nullptr || head->GetNext() == nullptr)
+        {
+            cout << "List contains less than 2 nodes\n";
+            return;
+        }
+
+        else if (secondNodeIndex - 1 == firstNodeIndex) // Checking if list contains more tha one node and the second node and first node addresses are consecutive and firstNodeIndex is a positive index
+        {
+            Node *current = head;
+            Node *previous = nullptr;
+
+            while (firstNodeIndex >= 0 && current != nullptr) // Traversing current node to second NodeIndex and previous node to firstNodeindex
+            {
+                previous = current;
+                current = current->GetNext();
+
+                firstNodeIndex--;
+            }
+
+            if (current != nullptr) // Checking if the addresses were valid there is no node at secondNodeIndex
+            {
+                Node *newNode = new Node();
+                newNode->SetData(data);
+                previous->SetNext(newNode);
+                newNode->SetNext(current);
+            }
+            else
+            {
+                cout << "List does not contains the specified nodes\n";
+            }
+        }
+        else
+        {
+            cout << "Indexes are not consecutive\n";
+            return;
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
