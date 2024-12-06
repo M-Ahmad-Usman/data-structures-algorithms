@@ -73,6 +73,21 @@ public:
             head = newNode;
         }
     }
+
+    ~List()
+    {
+        if (head != nullptr)
+        {
+            Node *current = head;
+            Node *next;
+            while (current != nullptr)
+            {
+                next = current->GetNext(); // Traversing to second node before deleting the first node
+                delete current;
+                current = next;
+            }
+        }
+    }
 };
 
 int main()
