@@ -310,6 +310,61 @@ public:
         }
     }
 
+    void Swap (int firstNodeIndex, int secondNodeIndex)
+    {
+        // This functions swaps data of two nodes of given indexes (Index starts from 0) 
+
+        if (head == nullptr) // checking if list is empty
+        {
+            cout << "List is empty\n";
+            return;
+        }
+
+        else if (head->GetNext() == nullptr) // Checking if list only contains one node
+        {
+            cout << "List contains only one node\n";
+            return;
+        }
+
+        else if (firstNodeIndex < 0 || secondNodeIndex < 0 || firstNodeIndex == secondNodeIndex) // Checking if indexes are negative or both indexes refer to the same node
+        {
+            cout << "Invalid node indexes\n";
+            return;
+        }
+
+        else if (head->GetNext() != nullptr)
+        {
+            Node *firstNode = head;
+            Node *secondNode = head;
+
+            while (firstNodeIndex > 0 && firstNode != nullptr)
+            {
+                firstNode = firstNode->GetNext();
+
+                firstNodeIndex--;
+            }
+
+            while (secondNodeIndex > 0 && secondNode != nullptr)
+            {
+                secondNode = secondNode->GetNext();
+
+                secondNodeIndex--;
+            }
+
+            // Swapping
+            if (firstNode != nullptr && secondNode != nullptr)
+            {
+                int temp = firstNode->GetData();
+                firstNode->SetData(secondNode->GetData());
+                secondNode->SetData(temp);
+            }
+            else
+            {
+                cout << "index out of bound\n";
+            }
+        }
+    }
+
     ~List()
     {
         if (head != nullptr)
@@ -363,18 +418,32 @@ int main()
 
     // --> Testing overloaded Insert Function with index (Tested)
     // Start
-    myList.Insert(1, 2);
-    myList.Insert(0, 0);
-    myList.Insert(1, 0);
-    myList.Insert(3, 1);
-    myList.Insert(4, 2);
-    myList.Insert(5, 8);
-    myList.Insert(1, -1);
+    // myList.Insert(1, 2);
+    // myList.Insert(0, 0);
+    // myList.Insert(1, 0);
+    // myList.Insert(3, 1);
+    // myList.Insert(4, 2);
+    // myList.Insert(5, 8);
+    // myList.Insert(1, -1);
 
-    myList.Delete(0);
-    myList.Delete(0);
-    myList.Delete(0);
-    myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // myList.Delete(0);
+    // End
+
+    // --> Testing Swap Function (Tested)
+    // Start
+    myList.Swap(-1, 1);
+    myList.Swap(0, 1);
+    myList.Insert(1);
+    myList.Insert(2);
+    myList.Swap(1,2);
+    myList.Swap(0,1);
+    myList.Swap(1,0);
+
     myList.Delete(0);
     myList.Delete(0);
     // End
